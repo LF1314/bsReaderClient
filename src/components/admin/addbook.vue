@@ -47,7 +47,8 @@
 </template>
 
 <script>
-    import {addbookmes} from "../../fetch/admin";
+import { Toast } from "mint-ui";
+ import {addbookmes} from "../../fetch/admin";
 export default {
   data() {
     return {
@@ -76,8 +77,8 @@ export default {
                   if(res.code !='200'){
                     Toast({
                       message: res.msg,
-                      position: 'bottom',
-                      duration: 5000
+                      position: 'middle',
+                      duration: 2000
                     });
                   }else{
                     Toast({
