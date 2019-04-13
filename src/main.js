@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import Mint from 'mint-ui';
 import 'mint-ui/lib/style.css'
+import './style/mun-uireset.css'
 import router from './router'
 import store from './store'
 import App from './App'

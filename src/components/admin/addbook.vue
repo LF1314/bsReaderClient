@@ -13,7 +13,7 @@
                         <mt-field label="封面" placeholder="书籍封面" type="url" v-model="images">
 
                         </mt-field>
-                        <mt-field label="评分" placeholder="评分" type="number" v-model="ratings">
+                        <mt-field label="评分" placeholder="书籍评分" type="number" v-model="ratings">
 
                         </mt-field>
 
@@ -21,14 +21,15 @@
 
                         </mt-field>
 
-                        <mt-field label="类型" placeholder="请输入类型"  v-model="type">
+                        <mt-field label="分类" placeholder="请输入分类"  v-model="type">
 
-                        </mt-field>
-                        <mt-field label="是否完结" placeholder="是否完结"  v-model="serialize">
-
-                        </mt-field>
-                    
-                        <mt-field label="收藏" placeholder="喜欢人数"  type="number" v-model="like">
+                        </mt-field> 
+                        <mt-radio
+                          align='right'
+                          v-model="serialize"
+                          :options="['完结', '连载']">
+                        </mt-radio>
+                        <mt-field label="收藏" placeholder="收藏人数"  type="number" v-model="like">
 
                         </mt-field>
 
@@ -37,7 +38,8 @@
                         </mt-field>
 
                         <div class="button">
-
+                         <mt-button @click.native="addbooks" type="primary" size="large">
+                           提交</mt-button>
                         </div>
 
                 </div>
@@ -54,16 +56,47 @@ export default {
       type: "",
       intro: "",
       images: "",
-      ratings: 0.0,
-      wordcount: 0,
+      ratings: null,
+      wordcount: null,
       serialize: "",
-      like: 0
+      like: ""
     };
+  },
+  methods:{
+    addbooks(){
+      addbookmes( this.name,
+                this.author,
+                this.images,
+                this.ratings,
+                this.wordcount,
+                this.type,
+                this.serialize,
+                this.like,
+                this.intro).then((res)=>{
+                  if(res.code !='200'){
+                    Toast({
+                      message: res.msg,
+                      position: 'bottom',
+                      duration: 5000
+                    });
+                  }else{
+                    Toast({
+                      message:'添加成功',
+                      iconClass: 'icon icon-success'
+                    });
+                  }
+                })
+    }
   }
 };
 </script>
 
 <style scoped lang='less'>
+.addbook_wraper{
+  background-color: #e4e5e6;
+  width: 100%;
+  height: 100%;
+}
 .top {
   text-align: center;
   h3 {
@@ -75,6 +108,13 @@ export default {
     -webkit-background-clip: text;
     color: transparent;
     font-size: 18px;
+  }
+}
+.basemeasage{
+  padding: 10px;
+  .button{
+    width: 100%;
+    margin-top: 10px;
   }
 }
 </style>
