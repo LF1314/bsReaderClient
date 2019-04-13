@@ -11,11 +11,21 @@
          </div>
          <div class="menu_item"> 
                 <ul>
-                    <li @click="gtoaddbook"> 
-                        <mt-cell title="添加书籍" is-link @click="gtoaddbook">
-                        <span style="color: green">这里是元素</span>
+                <li @click="gtoaddbook"> 
+                    <mt-cell title="添加书籍信息" is-link @click="gtoaddbook">
+                    <span style="color: green"></span>
+                    </mt-cell>
+                </li>
+                <li @click="gtobooklist" class="li_items"> 
+                        <mt-cell title="书籍列表" is-link @click="gtoaddbook">
+                        <span style="color: green"></span>
                         </mt-cell>
-                     </li>
+                </li>
+               <li @click="gtouserlist" class="li_items"> 
+                        <mt-cell title="用户列表" is-link @click="gtoaddbook">
+                        <span style="color: green"></span>
+                        </mt-cell>
+                </li>
                 </ul>
          </div>
     </div>
@@ -36,6 +46,13 @@ export default {
      methods: {
              gtoaddbook(){
                  this.$router.push('/addbook')
+             },
+             gtobooklist(){
+                 this.$router.push('/adminbooklist')
+             },
+             gtouserlist(){
+                 this.$router.push('/adminuserlist')
+                  
              }
         },
 };
@@ -45,7 +62,14 @@ export default {
 .wraper{
     height: 100%;
     width: 100%;
-    background-color: #fff;
+    background-color: #f6f2fa;
+    .menu_item{
+        margin-top: 20px;
+        .li_items{
+            margin-top: 10px
+        }
+    }
+              
 }
 .top {
     text-align: center;
@@ -62,16 +86,17 @@ export default {
 }
 .adminmes{
     width: 100%;
+    background: url(../../assets/admincenterbg.png);
     .admindetails{
         width: 100%;
-        height: 100px;
+        height: 200px;
         border: 1px solid #ddd;
         line-height: 100px;
         text-align: center;
         font-size: 12px;
         border-radius: 2%;
         color: #3ab4f2;
-        margin: 0 auto;
+        margin: 0 auto;   
     }
 }
 </style>

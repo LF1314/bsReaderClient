@@ -28,6 +28,11 @@ export default new Router({
             name:'addbook',
             component:resolve => require(['@/components/admin/addbook'], resolve)
         },
+        {
+            path:'/adminuserlist',
+            name:'adminuserlist',
+            component:resolve => require(['@/components/admin/adminuser'], resolve)
+        },
         // 用户路由
         {
             path: '/login',

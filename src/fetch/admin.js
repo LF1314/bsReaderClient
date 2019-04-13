@@ -66,4 +66,14 @@ export const addbookmes = (name,
         })
     })
 }
-
+// 获取用户列表
+export const adminuserlist = () => {
+    return new Promise((resolve, reject) => {
+        request({
+            url: '/userlist',
+            method: 'get'
+        }).then(res => {
+            resolve(res);
+        })
+    })
+}
